@@ -7,5 +7,7 @@ Source: https://forum.huawei.com/enterprise/en/communicate-with-fusionsolar-thro
 Creating a FusionSolar client requires the use of a factory static method that will create the client instances.
 ![](../../CreateFusionSolarClient.png)
 
-The basic thing is to log in to get a <b>XSRF-TOKEN</b> token. After obtaining the token, get code/codes of the stations from which you want to get data,
-you can do it using the getStationList -> stationCode method or just from FusionSolar panel. Subsequent methods provide the target data.
+The basic thing is to log in to get a **XSRF-TOKEN** token. After obtaining the token, get code/codes of the stations from which you want to get data,
+you can do it using the **getStationList** -> **stationCode** method or just from FusionSolar panel. Subsequent methods provide the target data.
+
+If you have any questions, please create an issue.
