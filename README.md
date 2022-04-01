@@ -11,3 +11,14 @@ The basic thing is to log in to get a **XSRF-TOKEN** token. After obtaining the 
 you can do it using the **getStationList** -> **stationCode** method or just from FusionSolar panel. Subsequent methods provide the target data.
 
 If you have any questions, please create an issue.
+
+# Requirements
+
+Required dependencies 
+- com.squareup.retrofit2
+  - converter-gson
+  - retrofit
+- com.google.code.gson
+  - gson
+- org.projectlombok
+  - lombok
