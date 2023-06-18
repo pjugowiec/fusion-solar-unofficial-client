@@ -1,8 +1,6 @@
-package com.fusionSolarClient;
+package com.fusionSolarUnofficialClient;
 
-import com.fusionSolarClient.model.request.BaseRequest;
-import com.fusionSolarClient.model.request.LoginFusionSolar;
-import com.fusionSolarClient.model.response.*;
+import com.fusionSolarUnofficialClient.response.*;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;

@@ -1,4 +1,4 @@
-package com.fusionSolarClient.model.response;
+package com.fusionSolarUnofficialClient.response;
 
 import lombok.Getter;
 import lombok.Setter;

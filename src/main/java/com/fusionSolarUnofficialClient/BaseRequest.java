@@ -1,11 +1,11 @@
-package com.fusionSolarClient.model.request;
+package com.fusionSolarUnofficialClient;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class BaseRequest {
+class BaseRequest {
     private String stationCodes;
     private Long collectTime;
 }

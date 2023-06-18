@@ -1,4 +1,4 @@
-package com.fusionSolarClient;
+package com.fusionSolarUnofficialClient;
 
 import lombok.NoArgsConstructor;
 
@@ -14,6 +14,6 @@ public class FusionSolarClientFactory {
      * Creates an instance of {@link FusionSolarClient}.
      */
     public static FusionSolarClient createFusionSolarClient() {
-        return new FusionSolarClientImpl();
+        return FusionSolarClientImpl.createInstance();
     }
 }

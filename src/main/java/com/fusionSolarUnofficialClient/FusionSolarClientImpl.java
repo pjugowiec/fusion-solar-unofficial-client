@@ -1,9 +1,6 @@
-package com.fusionSolarClient;
+package com.fusionSolarUnofficialClient;
 
-import com.fusionSolarClient.model.request.BaseRequest;
-import com.fusionSolarClient.model.request.LoginFusionSolar;
-import com.fusionSolarClient.model.response.*;
-import lombok.Builder;
+import com.fusionSolarUnofficialClient.response.*;
 import lombok.NoArgsConstructor;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -12,29 +9,40 @@ import java.io.IOException;
 
 import static lombok.AccessLevel.PROTECTED;
 
-@Builder
 @NoArgsConstructor(access = PROTECTED)
-class FusionSolarClientImpl implements FusionSolarClient {
+final class FusionSolarClientImpl implements FusionSolarClient {
 
     private final FusionSolarRestClient restClient = FusionSolarRestClientFactory.getRestClient();
+    private String token;
 
+    public static FusionSolarClientImpl createInstance() {
+        return new FusionSolarClientImpl();
+    }
+    
     @Override
-    public String login(final String userName, final String systemCode) {
+    public String login(final String userName, final String password) {
         final LoginFusionSolar login = LoginFusionSolar.builder()
                 .userName(userName)
-                .systemCode(systemCode)
+                .systemCode(password)
                 .build();
        Response<BaseResponse> response = executeCall(restClient.login(login));
-       return FusionSolarUtil.getXsrfTokenFromHeaders(response.headers());
+       final String tokenFromResponse = FusionSolarUtil.getXsrfTokenFromHeaders(response.headers());
+       token = tokenFromResponse;
+       return tokenFromResponse;
     }
 
     @Override
-    public StationList getStationList(final String token) {
+    public void setBaseUrl(final String baseUrl) {
+        FusionSolarRestClientFactory.setBaseUrl(baseUrl);
+    }
+
+    @Override
+    public StationList getStationList() {
        return executeCall(restClient.getStationList(token)).body();
     }
 
     @Override
-    public StationRealKpiList getStationRealKpi(final String token, final String stationCodes) {
+    public StationRealKpiList getStationRealKpi(final String stationCodes) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .build();
@@ -42,7 +50,7 @@ class FusionSolarClientImpl implements FusionSolarClient {
     }
 
     @Override
-    public StationKpiList getStationHourKpi(final String token, final String stationCodes, final Long collectTime) {
+    public StationKpiList getStationHourKpi(final String stationCodes, final Long collectTime) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .collectTime(collectTime)
@@ -51,7 +59,7 @@ class FusionSolarClientImpl implements FusionSolarClient {
     }
 
     @Override
-    public StationKpiList getStationDayKpi(final String token,final String stationCodes, final Long collectTime) {
+    public StationKpiList getStationDayKpi(final String stationCodes, final Long collectTime) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .collectTime(collectTime)
@@ -60,7 +68,7 @@ class FusionSolarClientImpl implements FusionSolarClient {
     }
 
     @Override
-    public StationKpiList getStationMonthKpi(final String token,final String stationCodes, final Long collectTime) {
+    public StationKpiList getStationMonthKpi(final String stationCodes, final Long collectTime) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .collectTime(collectTime)
@@ -69,7 +77,7 @@ class FusionSolarClientImpl implements FusionSolarClient {
     }
 
     @Override
-    public StationKpiList getStationYearKpi(final String token,final String stationCodes, final Long collectTime) {
+    public StationKpiList getStationYearKpi(final String stationCodes, final Long collectTime) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .collectTime(collectTime)
@@ -78,7 +86,7 @@ class FusionSolarClientImpl implements FusionSolarClient {
     }
 
     @Override
-    public DevList getDevList(final String token, final String stationCodes) {
+    public DevList getDevList(final String stationCodes) {
         final BaseRequest request = BaseRequest.builder()
                 .stationCodes(stationCodes)
                 .build();

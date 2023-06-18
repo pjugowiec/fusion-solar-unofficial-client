@@ -4,18 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fusionSolarClient</groupId>
-    <artifactId>FusionSolarClient</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.fusion</groupId>
+    <artifactId>fusion-solar-unofficial-client</artifactId>
+    <version>1.1.0</version>
+    <packaging>jar</packaging>
 
     <properties>
         <finalname>${project.artifactId}-${project.version}</finalname>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <retrofit.version>2.9.0</retrofit.version>
         <lombok.version>1.18.22</lombok.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub pjugowiec Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/pjugowiec/fusion-solar-unofficial-client</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -48,12 +57,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -61,10 +70,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
