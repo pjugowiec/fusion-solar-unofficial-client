@@ -12,13 +12,5 @@ you can do it using the **getStationList** -> **stationCode** method or just fro
 
 If you have any questions, please create an issue.
 
-# Requirements
-
-Required dependencies 
-- com.squareup.retrofit2
-  - converter-gson
-  - retrofit
-- com.google.code.gson
-  - gson
-- org.projectlombok
-  - lombok
+**Github package:**  
+https://github.com/pjugowiec/fusion-solar-unofficial-client/packages/1882766
